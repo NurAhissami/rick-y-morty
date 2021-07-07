@@ -1,70 +1,113 @@
-# Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Rick y Morty
 
-In the project directory, you can run:
+#### Nur Ahissami
 
-### `npm start`
+![Rick y Morty](./src/images/Rick_and_Morty_logo.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Buscador de personajes de Rick y Morty
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+El ejercicio consiste en desarrollar una página web _responsive_ con un **listado de personajes de Rick and Morty**, que
+podemos filtrar por el nombre del personaje. Vamos a usar React para realizarlo.
+Vamos de definir las distintas partes del ejercicio:
 
-### `npm test`
+### INDICE
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. [Estructura de datos](#Estructura-de-datos)
+2. [Listado de personajes](#Listado-de-personajes)
+3. [Filtrado de personajes](#Filtrado-de-personajes)
+4. [Detalle de personajes](#Detalle-de-personajes)
+5. [Sugerencias](#Sugerencias)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1.  ### Estructura de datos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+src
+ ├─ Components
+ |  └─ App.js
+ |  └─ CharacterCard.js
+ |  └─ CharacterDetail.js
+ |  └─ CharacterNotFound.js
+ |  └─ FilterByName.js
+ |  └─ FilterBySpecies.js
+ |  └─ FilterByType.js
+ |  └─ Filters.js
+ |  └─ Header.js
+ |  └─ IdnotFound.js
+ |  └─ ListCharacter.js
+ |  └─ PageNotFound.js
+ |  └─ Reset.js
+ |     
+ ├─ images
+ ├─ services
+ |   └─ api.js
+ |   └─ iconSpecies.js
+ |   └─ iconStatus.js
+ |   └─ local-storage.js
+ ├─ scss
+ |  ├─ components
+ |  ├─ core
+ |  ├─ layout
+ |  └─ pages
+ 
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+2.  ### Listado de personajes
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+En primer lugar, vamos a realizar una web con el listado de personajes de Rick and Morty.
+Para eso, vamos a utilizar el servicio de https://rickandmortyapi.com/documentation/#get-all-characters que nos devuelve información sobre los primeros 20 personajes de la serie. Sobre cada uno, vamos a pintar al menos: la foto, el nombre y la especie.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Listado](./src/images/list.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **BONUS:** Usar algún sistema de grid para pintar el listado de personajes.
+- **BONUS:** Ordenar el listado de personajes alfabéticamente por nombre.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **EXTRA:** Guardamos y recogemos los datos al LocalStorage para mantener la última búsqueda que hayamos realizado.
 
-## Learn More
+![GridAndOrder](./src/images/allcharacter.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3.  ### Filtrado de personajes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Ahora que ya tenemos el listado de personajes en pantalla, la segunda parte consiste en poder buscarlos por nombre. Para eso, añadimos un `input` a la interfaz, de forma que al ir escribiendo un nombre queden en la interfaz solo los personajes cuyo nombre contiene las letras escritas.
 
-### Code Splitting
+> **NOTA:** El filtro debe filtrar independientemente de que la usuaria introduzca el texto en mayúsuclas o minúsculas.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![FiltroNombre](./src/images/filters.png)
 
-### Analyzing the Bundle Size
+> **NOTA:** Si buscamos por un texto por ejemplo "XXX" y no hay ningún personaje que coincida con dicho texto se muestra un mensaje de error que dice: _"No hay ningún personaje que coincida con la palabra XXX"_.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![ErrorFiltroNombre](./src/images/characternotfound.png)
 
-### Making a Progressive Web App
+- **EXTRA** También se ha creado un `select` para poder filtar los personajes por especie.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+4.  ### Detalle de personajes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Implementamos una **nueva funcionalidad**: al hacer clic sobre la tarjeta de un personaje, su información aparecerá a pantalla completa.
 
-### Deployment
+Para hacer esto usamos `rutas` y `React router`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+En la pantalla de detalle aparecerá además de la foto, nombre y especie; el planeta de origen, el número de episodios en los que aparece y si está **vivo** o **muerto**.
 
-### `npm run build` fails to minify
+- **BONUS:** Mostramos la especie, el estado y el género con un icono.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Detalle](./src/images/carddetail.png)
+
+- **BONUS:** La URL del detalle de personaje es compartible, es decir, que si visitamos esa URL directamente en el navegador se ve el detalle del personaje. Y en el caso de que el usuario navegue a una URL inexistente como por ejemplo http://localhost:3000/#/detail/12345 (el id 12345 no existe) mostramos un mensaje del tipo _"El personaje que buscas no existe"_.
+
+![RutaDetalle](./src/images/notfound.png)
+
+> **NOTA:** Al entrar en el detalle de un personaje y a continuación pulsar atrás, el campo de texto de búsqueda muestra el texto que tenía anteriormente.
+
+
+
+5. ### Sugerencias
+
+Me encantaría recibir tu feedback, no dudes en abrir una PullRequest o Issue para seguir mejorando.
+
+Gracias!

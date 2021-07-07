@@ -1,0 +1,74 @@
+.form{
+    display: flex;    
+    flex-direction: column;
+    align-items: center; 
+
+    &__inputText{
+        border: solid 1px $colorInputText;
+        height: 40px;
+        width: 300px;
+        padding-left:15px ;
+        color: white;
+        border-radius: 5px;
+        background-color: transparent;
+    }
+    &__inputSpecies{
+        background-color: transparent;
+
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: solid 1px $colorInputText;
+        height: 40px;
+        width: 300px;
+        padding-left:15px ;
+        color: white;
+        border-radius: 5px;
+        
+    }
+    &__reset{       
+        width: 300px;
+        background-color: $colorInputText;
+        height: 40px;
+        border-radius: 5px;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 3px ;
+
+    }
+    @include tablet{
+        flex-direction: row;
+        justify-content: center;
+            &__inputText{
+                border: solid 1px $colorInputText;
+                height: 40px;
+                width: 400px;
+                padding-left:15px ;
+                color: white;
+                border-radius: 5px;
+
+            }
+            &__inputSpecies{
+                border: solid 1px $colorInputText;
+                height: 40px;
+                width: 200px;
+                padding-left:15px ;
+                color: white;
+                border-radius: 5px;
+                margin-left: 10px;
+            }
+            &__reset{
+                background-color: $colorInputText;
+                width: 100px;
+                margin-left: 10px;
+                border-radius: 5px;
+                color: white;
+                text-transform: uppercase;
+                font-weight: 700;
+                letter-spacing: 3px ;
+        
+            }
+        }
+    
+
+}

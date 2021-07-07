@@ -1,0 +1,90 @@
+
+.detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+&__button{
+    width: 300px;
+    background-color: $colorInputText;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    }
+    &__section{
+   margin-left: 20px;
+   margin-right: 20px;
+   background-color: $colorCharacter;
+   border-radius: 5px;
+   height: 450px;
+   width: 300px;
+   
+    }
+    &__img{
+        width: 300px;
+        border-radius: 5px;
+    }
+    &__name{
+        margin-top: 5px;
+        width: 100%;
+        margin-bottom: 5px;
+
+    }
+    &__list{
+        padding-left: 15px;   
+        padding-right: 15px;   
+        padding-bottom: 15px;   
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: space-between;
+        &--li{
+            margin-top: 5px;
+        } 
+    }
+    
+    @include tablet{
+        &__section{
+            padding: 20px;
+          width: 600px;
+            height: 300px;
+            padding-bottom: 20px;
+            display: flex;
+            align-items: center;
+            
+             }
+             &__img{
+                width: 200px;
+                border-radius: 50%;
+                height: 200px;
+            }
+             &__name{
+                font-size: 20px;
+            }
+            &__list{
+                flex-grow: 1;
+                font-size: 18px;   
+                padding-left: 40px;
+                &--li{
+                    margin-top: 5px;
+                } 
+            }
+
+    }
+
+}
+
+.button{
+    width: 300px;
+    background-color: $colorInputText;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    }
